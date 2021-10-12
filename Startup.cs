@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -61,7 +62,11 @@ namespace Catalog
           
             //for check health service that it's run or not
             services.AddHealthChecks()
-             .AddMongoDb(mongoDbSettings.ConnectionString,name:"mongodb",timeout: TimeSpan.FromSeconds(3));//for cheking healt of mongodb
+             .AddMongoDb(                      //for cheking healt of mongodb
+                 mongoDbSettings.ConnectionString,
+                 name:"mongodb",
+                 timeout: TimeSpan.FromSeconds(3),
+                 tags: new[]{"ready"}); //use tag to check that the service can receive requests
           
         }
 
@@ -84,7 +89,15 @@ namespace Catalog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/health");
+                
+                endpoints.MapHealthChecks("/health/ready",new HealthCheckOptions{
+                    Predicate = (check) => check.Tags.Contains("ready")
+                });
+                
+                  endpoints.MapHealthChecks("/health/live",new HealthCheckOptions{
+                    Predicate = (_) => false
+                });
+
             });
         }
     }
