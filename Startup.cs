@@ -35,12 +35,12 @@ namespace Catalog
             //To indicate how to serialize the date and the Guid to MongoDb
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-            
+            var mongoDbSettings=Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();  
+
             //Configure MongoDbClient
             services.AddSingleton<IMongoClient>(ServiceProvider => 
-            {
-              var settings=Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();  
-              return new MongoClient(settings.ConnectionString);
+            {              
+              return new MongoClient(mongoDbSettings.ConnectionString);
             });
 
             //1-to register the dependency in the service provider 
@@ -60,7 +60,8 @@ namespace Catalog
             });
           
             //for check health service that it's run or not
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+             .AddMongoDb(mongoDbSettings.ConnectionString,name:"mongodb",timeout: TimeSpan.FromSeconds(3));//for cheking healt of mongodb
           
         }
 

@@ -39,3 +39,6 @@ J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\runtimes\win\native\snappy64.dll
 J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
 J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\HealthChecks.MongoDb.dll
+J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+J:\Dev2021\WebApi\Catalog\bin\HPD\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
