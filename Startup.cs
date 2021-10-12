@@ -91,10 +91,29 @@ namespace Catalog
                 endpoints.MapControllers();
                 
                 endpoints.MapHealthChecks("/health/ready",new HealthCheckOptions{
-                    Predicate = (check) => check.Tags.Contains("ready")
+                    Predicate = (check) => check.Tags.Contains("ready"),
+                    ResponseWriter=async(context,report)=>
+                    {
+                        var result=JsonSerializer.serialize(
+                            
+                                new{
+                                    status=report.Status.ToString();
+                                    checks=report.Entries.Select(entry=>new {
+                                        name = entry.key,
+                                        status = entry.Value.Status.ToString(),
+                                        exception = entry.Value.Exception!=null entry.Value.Exception.Message:"none",
+                                        duration = entry.Value.Duration.ToString()
+                                    })
+                                }                            
+                        );
+                    }
                 });
                 
-                  endpoints.MapHealthChecks("/health/live",new HealthCheckOptions{
+                //format the content in json 
+                context.Response.ContentType = MediaTypesNames.Application.Json;
+                await context.Response.WriteAsync(result)
+
+                endpoints.MapHealthChecks("/health/live",new HealthCheckOptions{
                     Predicate = (_) => false
                 });
 
