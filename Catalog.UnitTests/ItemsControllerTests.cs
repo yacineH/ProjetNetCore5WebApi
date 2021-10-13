@@ -9,6 +9,7 @@ using Moq;
 using Xunit;
 using Microsoft.AspNetCore.Mvc;
 using FluentAssertions;
+using System.Collections.Generic;
 
 namespace Catalog.UnitTests
 {
@@ -61,20 +62,58 @@ namespace Catalog.UnitTests
               CreateRandomItem(),
               CreateRandomItem(),
               CreateRandomItem()
-            }; 
-            
+            };  
             repositoryStub.Setup(repo => repo.GetItemsAsync())
                 .ReturnsAsync(expectedItems);
             
             var controller=new ItemsController(repositoryStub.Object,loggerStub.Object);
-
            //Act
            var actualItems= await controller.GetItemsAsync();
+           //Assert
+           actualItems.Should().BeEquivalentTo(expectedItems);         
+        }
+
+
+        //TDD
+        //la methode n'est pas encore implementer on commmence par le test
+        [Fact]
+        public async Task GetItemsAsync_WithMatchingItems_ReturnsMatchingItems()
+        {
+           //Arrange
+            var allItems=new[]
+            {
+               new Item(){Name="Potion"},
+               new Item(){Name="Antidote"},
+               new Item(){Name="Hi-Potion"},
+            }; 
+            
+            var nameToMatch="Potion";
+
+            repositoryStub.Setup(repo => repo.GetItemsAsync())
+                .ReturnsAsync(allItems);
+            
+            var controller=new ItemsController(repositoryStub.Object,loggerStub.Object);
+
+           //Act
+           IEnumerable<ItemDto> foundItems = await controller.GetItemsAsync(nameToMatch);
 
            //Assert
-           actualItems.Should().BeEquivalentTo(expectedItems);
+           foundItems.Should().OnlyContain(
+               item=>item.Name == allItems[0].Name || item.Name == allItems[2].Name 
+            );
            
         }
+
+
+
+
+
+
+
+
+
+
+
 
         [Fact]
         public async Task CreateItemAsync_WithItemToCreate_ReturnsCreatedItem()

@@ -28,15 +28,29 @@ namespace Catalog.Api.Controllers
 
         //Get /items
        [HttpGet]
-       public async Task<IEnumerable<ItemDto>> GetItemsAsync()
+       public async Task<IEnumerable<ItemDto>> GetItemsAsync(string nameToMatch=null)
        {
            var items = (await repository.GetItemsAsync())
                        .Select(item => item.AsDto());
 
-           //logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}:Retrieved {}")
+            if(!string.IsNullOrWhiteSpace(nameToMatch))
+            {
+              items=items.Where(items=>items.Name.Contains(nameToMatch,StringComparison.OrdinalIgnoreCase));
+            }  
+           
+           logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}:Retrieved {items.Count()} items");
           
            return items;
        }
+
+
+        //on rajoute le parametre dans la methode avce la meme
+        //signature et on le met optionel nameTomatch=null 
+        // public Task<IEnumerable<ItemDto>> GetItemsAsync()
+        // {
+        //     throw new NotImplementedException();
+        // }
+
 
         //GET /item/{id}
        [HttpGet("{id}")]
@@ -108,6 +122,6 @@ namespace Catalog.Api.Controllers
            return NoContent();       
        }
 
-       
-   } 
+
+    } 
 }
