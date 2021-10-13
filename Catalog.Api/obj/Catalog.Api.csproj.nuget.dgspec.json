@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {}
+    "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {}
   },
   "projects": {
-    "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+    "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectUniqueName": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "projectName": "Catalog.Api",
-        "projectPath": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "packagesPath": "C:\\Users\\Yacine\\.nuget\\packages\\",
-        "outputPath": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\obj\\",
+        "outputPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

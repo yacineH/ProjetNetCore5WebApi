@@ -6,6 +6,7 @@ using Catalog.Api.Dtos;
 using Catalog.Api.Entities;
 using Catalog.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Catalog.Api.Controllers
 {
@@ -45,7 +46,7 @@ namespace Catalog.Api.Controllers
               return NotFound(); 
            }
 
-           return Ok(item.AsDto()); 
+           return item.AsDto(); 
        }
 
         //in convention we need to return the object created

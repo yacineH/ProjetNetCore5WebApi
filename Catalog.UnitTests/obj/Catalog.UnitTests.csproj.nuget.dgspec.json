@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\Dev2021\\WebApi\\Catalog\\catalog.unittests\\Catalog.UnitTests.csproj": {}
+    "j:\\Dev2021\\WebApi\\Catalog\\Catalog.UnitTests\\Catalog.UnitTests.csproj": {}
   },
   "projects": {
-    "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+    "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectUniqueName": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "projectName": "Catalog.Api",
-        "projectPath": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "packagesPath": "C:\\Users\\Yacine\\.nuget\\packages\\",
-        "outputPath": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\obj\\",
+        "outputPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -82,14 +82,14 @@
         }
       }
     },
-    "J:\\Dev2021\\WebApi\\Catalog\\catalog.unittests\\Catalog.UnitTests.csproj": {
+    "j:\\Dev2021\\WebApi\\Catalog\\Catalog.UnitTests\\Catalog.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\Dev2021\\WebApi\\Catalog\\catalog.unittests\\Catalog.UnitTests.csproj",
+        "projectUniqueName": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.UnitTests\\Catalog.UnitTests.csproj",
         "projectName": "Catalog.UnitTests",
-        "projectPath": "J:\\Dev2021\\WebApi\\Catalog\\catalog.unittests\\Catalog.UnitTests.csproj",
+        "projectPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.UnitTests\\Catalog.UnitTests.csproj",
         "packagesPath": "C:\\Users\\Yacine\\.nuget\\packages\\",
-        "outputPath": "J:\\Dev2021\\WebApi\\Catalog\\catalog.unittests\\obj\\",
+        "outputPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -109,8 +109,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
-                "projectPath": "J:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj"
+              "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+                "projectPath": "j:\\Dev2021\\WebApi\\Catalog\\Catalog.Api\\Catalog.Api.csproj"
               }
             }
           }
@@ -125,6 +125,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.1.0, )"
+            },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
               "version": "[5.0.0, )"
