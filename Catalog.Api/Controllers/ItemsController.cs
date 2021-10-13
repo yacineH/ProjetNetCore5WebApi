@@ -17,9 +17,12 @@ namespace Catalog.Api.Controllers
    {
        private readonly IItemsRepository repository;
 
-       public ItemsController(IItemsRepository repository)
+       private readonly ILogger<ItemsController> logger;
+
+       public ItemsController(IItemsRepository repository,ILogger<ItemsController> logger)
        {
            this.repository=repository;
+           this.logger=logger;
        }
 
         //Get /items
