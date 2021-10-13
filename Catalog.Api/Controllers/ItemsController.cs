@@ -28,14 +28,14 @@ namespace Catalog.Api.Controllers
 
         //Get /items
        [HttpGet]
-       public async Task<IEnumerable<ItemDto>> GetItemsAsync(string nameToMatch=null)
+       public async Task<IEnumerable<ItemDto>> GetItemsAsync(string name=null)
        {
            var items = (await repository.GetItemsAsync())
                        .Select(item => item.AsDto());
 
-            if(!string.IsNullOrWhiteSpace(nameToMatch))
+            if(!string.IsNullOrWhiteSpace(name))
             {
-              items=items.Where(items=>items.Name.Contains(nameToMatch,StringComparison.OrdinalIgnoreCase));
+              items=items.Where(items=>items.Name.Contains(name,StringComparison.OrdinalIgnoreCase));
             }  
            
            logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}:Retrieved {items.Count()} items");
